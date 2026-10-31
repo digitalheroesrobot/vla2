@@ -14,14 +14,9 @@ vision-language-action (VLA) systems.
 | 2 | Available | Language modeling | Build and train a small GPT-style text model. |
 | 3 | Available | Vision Transformers | Turn images into patch tokens and train a small ViT. |
 | 4 | Available | Vision-language alignment | Train a mini-CLIP and explore shared image-text embeddings. |
-| 5 | Planned | Vision-language model | Connect visual features and language in a small image-question-answering model. |
-| 6 | Planned | Robot actions and control | Represent robot states and actions; learn basic kinematics and feedback control. |
-| 7 | Planned | Learning from demonstrations | Collect and structure demonstrations, then train a behavior-cloning policy. |
-| 8 | Planned | Vision-language-action policy | Condition action prediction on camera observations and language instructions. |
-| 9 | Planned | Simulation and evaluation | Run closed-loop manipulation tasks and measure success and failure cases. |
-| 10 | Planned | Real-robot deployment | Connect a policy to robot hardware with calibration, runtime checks, and safety limits. |
+| 5 | Available | Vision-language question answering | Fuse visual features and language to answer questions about an image. |
 
-Phases 0–4 are the lessons currently in this repository. Later phases describe
+Phases 0–5 are the lessons currently in this repository. Later phases describe
 the intended course direction and are not implemented yet.
 
 ## What you'll learn
@@ -37,13 +32,15 @@ By working through the available lessons, you'll learn how to:
 - Represent images as patch tokens and build a small Vision Transformer.
 - Align image and text representations with contrastive learning, as used in
   CLIP-style models.
+- Combine image features and language-question features to answer simple
+  questions about generated images.
 - Inspect educational-scale implementations and experiment with each part of
   the learning process.
 
-The planned phases will extend these foundations to vision-language models,
-robot state and control, learning from demonstrations, action prediction,
-simulation, and real-robot deployment. Those topics are roadmap goals, not
-lessons currently available in this repository.
+The planned phases will extend these foundations to robot state and control,
+learning from demonstrations, action prediction, simulation, and real-robot
+deployment. Those topics are roadmap goals, not lessons currently available
+in this repository.
 
 ## Available lessons
 
@@ -73,6 +70,10 @@ lessons currently available in this repository.
 
 - [Mini-CLIP](phase4/clip_mini.py)
 
+### Phase 5 — Vision-language question answering
+
+- [A mini vision-language QA model](phase5/vlm_mini.py)
+
 ## Learning path
 
 The available lessons are standalone scripts, but they build on one another:
@@ -81,7 +82,9 @@ The available lessons are standalone scripts, but they build on one another:
 2. Train simple models and develop intuition for image features and attention.
 3. Build a small language model and a vision transformer.
 4. Align image and text representations with contrastive learning.
-5. Continue toward robot control, demonstrations, action prediction, and
+5. Combine image and question features in a small visual question-answering
+   model.
+6. Continue toward robot control, demonstrations, action prediction, and
    deployment as the planned phases are added.
 
 These are educational-scale implementations intended to make core ideas
@@ -103,6 +106,7 @@ python phase0/1linear_algebra.py
 python phase1/5attention_from_scratch.py
 python phase2/1gpt_mini.py
 python phase4/clip_mini.py
+python phase5/vlm_mini.py
 ```
 
 Each lesson runs independently. Most use generated toy data and do not need
@@ -121,7 +125,8 @@ data/
 ```
 
 Without a local image dataset, relevant lessons use or generate sample data.
-Mini-CLIP trains on generated image-caption pairs.
+Mini-CLIP trains on generated image-caption pairs, and the Phase 5 QA lesson
+generates colored-shape images and questions in memory.
 
 Plots, visualizations, and checkpoints are written to `outputs/`. Some
 lessons also generate small datasets under `data/` when they run.
